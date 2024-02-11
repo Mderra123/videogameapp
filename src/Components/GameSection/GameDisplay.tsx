@@ -14,7 +14,7 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import { Game } from "../../Utility/types/sort-types";
+import { Game } from "../../Utility/types/game-types";
 import platformIcons from "../../Utility/maps/platformIcons";
 
 interface Props {
@@ -51,8 +51,8 @@ function GameDisplay({ games, platform, order }: Props) {
       return true;
     }
     let contains = false;
-    for (let p of gm.parent_platforms) {
-      if (p.platform.name.toLowerCase() == platform) {
+    for (let parentPlatform of gm.parent_platforms) {
+      if (parentPlatform.platform.name.toLowerCase() == platform) {
         contains = true;
       }
     }
@@ -89,7 +89,7 @@ function GameDisplay({ games, platform, order }: Props) {
                 <Flex gap={1}>
                   {game.parent_platforms.map((plat) => (
                     <Icon
-                      key={plat.platform.name}
+                      key={plat.platform.id}
                       as={platformIcons[plat.platform.name.toLowerCase()]}
                       color={colorMode == "dark" ? "gray.600" : "black"}
                       boxSize={5}

@@ -1,11 +1,12 @@
 import { Select } from "@chakra-ui/react";
-import { Platforms } from "../../Utility/types/sort-types";
+import { Platform } from "../../Utility/types/sort-types";
 
 interface Props {
-  onFilter: (filter: string) => void;
+  onFilter: (platform: string) => void;
+  platforms: Platform[];
 }
 
-function PlatformFilter({ onFilter }: Props) {
+function PlatformFilter({ onFilter, platforms }: Props) {
   return (
     <Select
       variant={"filled"}
@@ -14,9 +15,9 @@ function PlatformFilter({ onFilter }: Props) {
       }}
     >
       <option value="all">All</option>
-      {Platforms.map((plat) => (
-        <option key={plat} value={plat.toLowerCase()}>
-          {plat}
+      {platforms.map((plat) => (
+        <option key={plat.id} value={plat.name}>
+          {plat.name}
         </option>
       ))}
     </Select>

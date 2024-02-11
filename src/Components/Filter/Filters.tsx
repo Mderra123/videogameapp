@@ -1,24 +1,34 @@
 import { Box } from "@chakra-ui/react";
 import PlatformFilter from "./PlatformFilter";
 import SortFilter from "./SortFilter";
-import { Genre } from "../../Utility/types/sort-types";
+import { Platform } from "../../Utility/types/sort-types";
+import { Genre } from "../../Utility/types/genre-types";
 import FilterMenu from "./FilterMenu";
 import GenreMenu from "../Genres/GenreMenu";
 
 interface Props {
-  onFilterPlatform: (filter: string) => void;
+  onFilterPlatform: (platform: string) => void;
   onFilterOrder: (filter: { sort: string; order: string }) => void;
   genres: Genre[];
+  platforms: Platform[];
 }
 
-function Filters({ onFilterOrder, onFilterPlatform, genres }: Props) {
+function Filters({
+  onFilterOrder,
+  onFilterPlatform,
+  genres,
+  platforms,
+}: Props) {
   return (
     <>
       <Box
         display={{ base: "none", md: "grid" }}
         gridTemplateColumns={"1fr 1fr"}
       >
-        <PlatformFilter onFilter={onFilterPlatform}></PlatformFilter>
+        <PlatformFilter
+          onFilter={onFilterPlatform}
+          platforms={platforms}
+        ></PlatformFilter>
         <SortFilter onFilter={onFilterOrder}></SortFilter>
       </Box>
       <Box
@@ -27,6 +37,7 @@ function Filters({ onFilterOrder, onFilterPlatform, genres }: Props) {
         gap={2}
       >
         <FilterMenu
+          platforms={platforms}
           onFilterPlatform={onFilterPlatform}
           onFilterOrder={onFilterOrder}
         />

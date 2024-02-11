@@ -4,18 +4,28 @@ import Genres from "./Components/Genres/Genres";
 import NavBar from "./Components/NavBar/NavBar";
 import { useState, useEffect } from "react";
 import GameService from "./Utility/services/game-services";
-import { Game } from "./Utility/types/sort-types";
+import { Game } from "./Utility/types/game-types";
 import { Genre } from "./Utility/types/genre-types";
+import { Platform } from "./Utility/types/sort-types";
 
 function App() {
   const [games, setGames] = useState<Game[]>([]);
   const [isLoading, setLoading] = useState(true);
   const [genres, setGenres] = useState<Genre[]>([]);
   const [genre, setGenre] = useState("All");
+  const [platforms, setPlatforms] = useState<Platform[]>([]);
+  const [platform, setPlatform] = useState("all");
 
   useEffect(() => {
     GameService.getGenres().then((res) => {
       setGenres(res.data.results);
+    });
+  }, []);
+
+  useEffect(() => {
+    GameService.getPlatforms().then((res) => {
+      console.log(res.data.results);
+      setPlatforms(res.data.results);
     });
   }, []);
 
@@ -39,6 +49,10 @@ function App() {
     );
   };
 
+  const onChangePlatform = (platform: string) => {
+    setPlatform(platform.toLowerCase());
+  };
+
   return (
     <>
       <NavBar />
@@ -47,10 +61,13 @@ function App() {
           <Genres genres={genres} onChangeGenre={onChangeGenre} />
         </Hide>
         <GameSection
+          setPlatform={onChangePlatform}
+          platform={platform}
+          platforms={platforms}
+          genre={genre}
           genres={genres}
           games={games}
           isLoading={isLoading}
-          genre={genre}
         ></GameSection>
       </SimpleGrid>
     </>

@@ -8,15 +8,16 @@ import {
   MenuDivider,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { Platforms, SortTypes } from "../../Utility/types/sort-types";
+import { Platform, SortTypes } from "../../Utility/types/sort-types";
 import { useEffect, useState } from "react";
 
 interface Props {
   onFilterPlatform: (filter: string) => void;
   onFilterOrder: (filter: { sort: string; order: string }) => void;
+  platforms: Platform[];
 }
 
-function FilterMenu({ onFilterOrder, onFilterPlatform }: Props) {
+function FilterMenu({ onFilterOrder, onFilterPlatform, platforms }: Props) {
   const [sort, setSort] = useState({
     sort: "relevance",
     order: "d",
@@ -43,13 +44,13 @@ function FilterMenu({ onFilterOrder, onFilterPlatform }: Props) {
             <MenuItemOption value={"all"} closeOnSelect={true}>
               All
             </MenuItemOption>
-            {Platforms.map((plat) => (
+            {platforms.map((plat) => (
               <MenuItemOption
-                key={plat}
-                value={plat.toLowerCase()}
+                key={plat.id}
+                value={plat.name.toLowerCase()}
                 closeOnSelect={true}
               >
-                {plat}
+                {plat.name}
               </MenuItemOption>
             ))}
           </SimpleGrid>
