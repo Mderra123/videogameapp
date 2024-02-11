@@ -1,9 +1,9 @@
 import { Hide, SimpleGrid } from "@chakra-ui/react";
-import GameSection from "./GameSection/GameSection";
-import Genres from "./Genres/Genres";
-import NavBar from "./NavBar/NavBar";
+import GameSection from "./Components/GameSection/GameSection";
+import Genres from "./Components/Genres/Genres";
+import NavBar from "./Components/NavBar/NavBar";
 import { useState, useEffect } from "react";
-import GameService from "./services/game-services";
+import GameService from "./Utility/services/game-services";
 import { Game, Genre } from "./types";
 
 function App() {

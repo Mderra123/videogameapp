@@ -13,7 +13,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import platformIcons from "../maps/platformIcons";
+import platformIcons from "../../Utility/maps/platformIcons";
 
 function GameSkeletons() {
   const games = [1, 2, 3, 4, 5, 6, 7, 8, 9];

@@ -1,10 +1,10 @@
 import { Container, Heading } from "@chakra-ui/react";
-import Filters from "./Filter/Filters";
+import Filters from "../Filter/Filters";
 import GameDisplay from "./GameDisplay";
 import GameSkeletons from "./GameSkeletons";
 import { useState } from "react";
-import { Game, Genre } from "../types";
-import platformMap from "../maps/platformMap";
+import { Game, Genre } from "../../types";
+import platformMap from "../../Utility/maps/platformMap";
 
 interface Props {
   games: Game[];

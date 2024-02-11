@@ -3,7 +3,7 @@ import PlatformFilter from "./PlatformFilter";
 import SortFilter from "./SortFilter";
 import { Genre } from "../../types";
 import FilterMenu from "./FilterMenu";
-import GenreMenu from "../../Genres/GenreMenu";
+import GenreMenu from "../Genres/GenreMenu";
 
 interface Props {
   onFilterPlatform: (filter: string) => void;

@@ -7,7 +7,7 @@ import {
   MenuItemOption,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { Genre } from "../types";
+import { Genre } from "../../types";
 
 interface Props {
   genres: Genre[];

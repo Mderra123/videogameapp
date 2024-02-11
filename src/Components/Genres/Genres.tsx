@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Stack, useColorMode } from "@chakra-ui/react";
-import { Genre } from "../types";
+import { Genre } from "../../types";
 import { useState } from "react";
 
 interface Props {
