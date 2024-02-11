@@ -1,4 +1,4 @@
-import { GenreResponse } from "../../types";
+import { GenreResponse } from "../types/genre-types";
 import ApiClient from "./api-client";
 
 const APIKEY = "ed60b1b092684223a9e26f642d6feca8";

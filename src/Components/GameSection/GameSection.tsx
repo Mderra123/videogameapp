@@ -3,7 +3,8 @@ import Filters from "../Filter/Filters";
 import GameDisplay from "./GameDisplay";
 import GameSkeletons from "./GameSkeletons";
 import { useState } from "react";
-import { Game, Genre } from "../../types";
+import { Game } from "../../Utility/types/game-types";
+import { Genre } from "../../Utility/types/genre-types";
 import platformMap from "../../Utility/maps/platformMap";
 
 interface Props {

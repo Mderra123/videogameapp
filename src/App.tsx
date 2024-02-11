@@ -4,7 +4,8 @@ import Genres from "./Components/Genres/Genres";
 import NavBar from "./Components/NavBar/NavBar";
 import { useState, useEffect } from "react";
 import GameService from "./Utility/services/game-services";
-import { Game, Genre } from "./types";
+import { Game } from "./Utility/types/sort-types";
+import { Genre } from "./Utility/types/genre-types";
 
 function App() {
   const [games, setGames] = useState<Game[]>([]);

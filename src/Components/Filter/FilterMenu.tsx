@@ -8,7 +8,7 @@ import {
   MenuDivider,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { Platforms, SortTypes } from "../../types";
+import { Platforms, SortTypes } from "../../Utility/types/sort-types";
 import { useEffect, useState } from "react";
 
 interface Props {

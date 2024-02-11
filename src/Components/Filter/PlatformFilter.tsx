@@ -1,5 +1,5 @@
 import { Select } from "@chakra-ui/react";
-import { Platforms } from "../../types";
+import { Platforms } from "../../Utility/types/sort-types";
 
 interface Props {
   onFilter: (filter: string) => void;

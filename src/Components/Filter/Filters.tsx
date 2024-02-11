@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import PlatformFilter from "./PlatformFilter";
 import SortFilter from "./SortFilter";
-import { Genre } from "../../types";
+import { Genre } from "../../Utility/types/sort-types";
 import FilterMenu from "./FilterMenu";
 import GenreMenu from "../Genres/GenreMenu";
 

@@ -1,5 +1,5 @@
 import { IconButton, Select, SimpleGrid } from "@chakra-ui/react";
-import { SortTypes } from "../../types";
+import { SortTypes } from "../../Utility/types/sort-types";
 import { useEffect, useState } from "react";
 
 import {

@@ -14,7 +14,7 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import { Game } from "../../types";
+import { Game } from "../../Utility/types/sort-types";
 import platformIcons from "../../Utility/maps/platformIcons";
 
 interface Props {
