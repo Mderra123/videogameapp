@@ -36,9 +36,6 @@ function FilterMenu({ onFilterOrder, onFilterPlatform, platforms }: Props) {
           type="radio"
           display={"flex"}
           justifyContent={{ base: "", sm: "center" }}
-          onChange={(e) => {
-            onFilterPlatform(e as string);
-          }}
         >
           <SimpleGrid columns={{ base: 1, sm: 2 }} columnGap={0}>
             <MenuItemOption value={"all"} closeOnSelect={true}>
@@ -49,6 +46,9 @@ function FilterMenu({ onFilterOrder, onFilterPlatform, platforms }: Props) {
                 key={plat.id}
                 value={plat.name.toLowerCase()}
                 closeOnSelect={true}
+                onClick={() => {
+                  onFilterPlatform(plat.name);
+                }}
               >
                 {plat.name}
               </MenuItemOption>

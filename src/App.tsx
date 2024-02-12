@@ -59,6 +59,7 @@ function App() {
           <Genres genres={genres} onChangeGenre={onChangeGenre} />
         </Hide>
         <GameSection
+          onChangeGenre={onChangeGenre}
           setPlatform={onChangePlatform}
           platform={platform}
           platforms={platforms}

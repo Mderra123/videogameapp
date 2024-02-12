@@ -9,6 +9,7 @@ import GenreMenu from "../Genres/GenreMenu";
 interface Props {
   onFilterPlatform: (platform: string) => void;
   onFilterOrder: (filter: { sort: string; order: string }) => void;
+  onChangeGenre: (genre: Genre) => void;
   genres: Genre[];
   platforms: Platform[];
 }
@@ -16,6 +17,7 @@ interface Props {
 function Filters({
   onFilterOrder,
   onFilterPlatform,
+  onChangeGenre,
   genres,
   platforms,
 }: Props) {
@@ -41,7 +43,7 @@ function Filters({
           onFilterPlatform={onFilterPlatform}
           onFilterOrder={onFilterOrder}
         />
-        <GenreMenu genres={genres} />
+        <GenreMenu onChangeGenre={onChangeGenre} genres={genres} />
       </Box>
     </>
   );

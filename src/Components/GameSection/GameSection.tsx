@@ -16,6 +16,7 @@ interface Props {
   platform: string;
   platforms: Platform[];
   setPlatform: (platform: string) => void;
+  onChangeGenre: (genre: Genre) => void;
 }
 
 function GameSection({
@@ -26,6 +27,7 @@ function GameSection({
   platform,
   platforms,
   setPlatform,
+  onChangeGenre,
 }: Props) {
   const [orderFilter, setOrderFilter] = useState({ sort: "", order: "" });
   const onFilterOrder = (filter: { sort: string; order: string }) => {
@@ -40,6 +42,7 @@ function GameSection({
         {platformDisplay} {genre} Games
       </Heading>
       <Filters
+        onChangeGenre={onChangeGenre}
         genres={genres}
         platforms={platforms}
         onFilterOrder={onFilterOrder}

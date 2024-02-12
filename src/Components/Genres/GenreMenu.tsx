@@ -11,9 +11,10 @@ import { Genre } from "../../Utility/types/genre-types";
 
 interface Props {
   genres: Genre[];
+  onChangeGenre: (genre: Genre) => void;
 }
 
-function GenreMenu({ genres }: Props) {
+function GenreMenu({ genres, onChangeGenre }: Props) {
   return (
     <Menu matchWidth={true}>
       <MenuButton as={Button}>Genres</MenuButton>
@@ -22,7 +23,13 @@ function GenreMenu({ genres }: Props) {
           <SimpleGrid columns={{ base: 2, sm: 4 }} rowGap={2} columnGap={0}>
             <MenuItemOption value={""}>All</MenuItemOption>
             {genres.map((genre) => (
-              <MenuItemOption key={genre.id} value={genre.name}>
+              <MenuItemOption
+                key={genre.id}
+                value={genre.name}
+                onClick={() => {
+                  onChangeGenre(genre);
+                }}
+              >
                 {genre.name}
               </MenuItemOption>
             ))}
