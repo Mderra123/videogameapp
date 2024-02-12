@@ -1,5 +1,6 @@
-import { Select } from "@chakra-ui/react";
+import { Select, useColorMode } from "@chakra-ui/react";
 import { Platform } from "../../Utility/types/sort-types";
+import sortStyles from "../../Utility/styles/sort.styles";
 
 interface Props {
   onFilter: (platform: string) => void;
@@ -7,9 +8,11 @@ interface Props {
 }
 
 function PlatformFilter({ onFilter, platforms }: Props) {
+  const { colorMode } = useColorMode();
   return (
     <Select
       variant={"filled"}
+      {...sortStyles.all(colorMode)}
       onChange={(e) => {
         onFilter(e.target.value);
       }}

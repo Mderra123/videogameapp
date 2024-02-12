@@ -18,7 +18,7 @@ function SearchBar() {
         <Input
           type="text"
           placeholder="Search"
-          bg={colorMode == "dark" ? "whiteAlpha.200" : "blackAlpha.300"}
+          bg={colorMode == "dark" ? "whiteAlpha.200" : "white"}
           _placeholder={
             colorMode == "dark"
               ? {

@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { Game } from "../../Utility/types/game-types";
 import platformIcons from "../../Utility/maps/platformIcons";
+import cardStyles from "../../Utility/styles/card-styles";
 
 interface Props {
   games: Game[];
@@ -69,19 +70,12 @@ function GameDisplay({ games, platform, order }: Props) {
           return sortGames(a, b);
         })
         .map((game) => (
-          <Card
-            key={game.id}
-            maxW="sm"
-            m={5}
-            bg={colorMode == "dark" ? "gray.800" : "gray.400"}
-          >
+          <Card key={game.id} {...cardStyles.Card(colorMode)}>
             <CardHeader p={0}>
               <Image
-                h={32}
-                w={"100%"}
+                {...cardStyles.Image}
                 src={game.background_image}
                 alt={game.name + " " + game.description}
-                borderTopRadius={"lg"}
               />
             </CardHeader>
             <CardBody>
@@ -91,8 +85,7 @@ function GameDisplay({ games, platform, order }: Props) {
                     <Icon
                       key={plat.platform.id}
                       as={platformIcons[plat.platform.name.toLowerCase()]}
-                      color={colorMode == "dark" ? "gray.600" : "black"}
-                      boxSize={5}
+                      {...cardStyles.Icon(colorMode)}
                     ></Icon>
                   ))}
                 </Flex>
@@ -105,7 +98,6 @@ function GameDisplay({ games, platform, order }: Props) {
                       ? "yellow"
                       : "red"
                   }
-                  float={"inline-start"}
                 >
                   {game.metacritic}
                 </Badge>

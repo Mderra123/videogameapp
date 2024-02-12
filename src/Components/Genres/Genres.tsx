@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Stack, useColorMode } from "@chakra-ui/react";
-import { Genre } from "../../Utility/types/sort-types";
+import { Genre } from "../../Utility/types/genre-types";
 import { useState } from "react";
 
 interface Props {
@@ -27,18 +27,27 @@ function Genres({ genres, onChangeGenre }: Props) {
           gap={5}
           borderRadius={5}
           _hover={{
-            bg: "whiteAlpha.200",
+            bg: colorMode == "dark" ? "whiteAlpha.200" : "white",
             cursor: "pointer",
           }}
-          bg={selectedGenreId == 0 ? "whiteAlpha.200" : ""}
+          bg={
+            selectedGenreId == 0
+              ? colorMode == "dark"
+                ? "whiteAlpha.200"
+                : "white"
+              : ""
+          }
           overflow={"hidden"}
           onClick={() => {
+            if (selectedGenreId == 0) {
+              return;
+            }
             handleClick({ id: 0, name: "All", image_background: "" });
           }}
         >
           <Box
             w={{ base: 8, sm: 10, lg: 12 }}
-            bg={colorMode == "dark" ? "whiteAlpha.200" : "blackAlpha.200"}
+            bg={colorMode == "dark" ? "whiteAlpha.200" : "white"}
             borderRadius={5}
             aspectRatio={1}
           />
@@ -53,12 +62,21 @@ function Genres({ genres, onChangeGenre }: Props) {
             key={genre.id}
             borderRadius={5}
             _hover={{
-              bg: "whiteAlpha.200",
+              bg: colorMode == "dark" ? "whiteAlpha.200" : "white",
               cursor: "pointer",
             }}
-            bg={selectedGenreId == genre.id ? "whiteAlpha.200" : ""}
+            bg={
+              selectedGenreId == genre.id
+                ? colorMode == "dark"
+                  ? "whiteAlpha.200"
+                  : "white"
+                : ""
+            }
             overflow={"hidden"}
             onClick={() => {
+              if (selectedGenreId == genre.id) {
+                return;
+              }
               handleClick(genre);
             }}
           >

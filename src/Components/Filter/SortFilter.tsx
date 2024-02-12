@@ -1,4 +1,4 @@
-import { IconButton, Select, SimpleGrid } from "@chakra-ui/react";
+import { IconButton, Select, SimpleGrid, useColorMode } from "@chakra-ui/react";
 import { SortTypes } from "../../Utility/types/sort-types";
 import { useEffect, useState } from "react";
 
@@ -8,12 +8,15 @@ import {
   FaSortAmountDown,
   FaSortAmountUp,
 } from "react-icons/fa";
+import sortStyles from "../../Utility/styles/sort.styles";
 
 interface Props {
   onFilter: (filter: { sort: string; order: string }) => void;
 }
 
 function SortFilter({ onFilter }: Props) {
+  const { colorMode } = useColorMode();
+
   const [sort, setSort] = useState({
     sort: "relevance",
     order: "d",
@@ -33,15 +36,14 @@ function SortFilter({ onFilter }: Props) {
     );
 
   useEffect(() => {
-    console.log(sort);
     onFilter(sort);
   }, [sort]);
 
   return (
     <SimpleGrid gridTemplateColumns={"4fr 1fr"}>
       <Select
-        placeholder="Sort By"
         variant={"filled"}
+        {...sortStyles.all(colorMode)}
         onChange={(e) => {
           setSort({ ...sort, sort: e.target.value });
         }}
@@ -49,27 +51,17 @@ function SortFilter({ onFilter }: Props) {
         {SortTypes.map((type) => (
           <option key={type} value={type.toLowerCase()}>
             {type}
-            {type == "Relevance" && " (Default)"}
           </option>
         ))}
       </Select>
       <IconButton
         aria-label="Sort Games"
         icon={sortIcon}
+        {...sortStyles.all(colorMode)}
         onClick={() => {
           setSort({ ...sort, order: sort.order == "a" ? "d" : "a" });
         }}
       />
-      {/* <Select
-        placeholder="Order"
-        variant={"filled"}
-        onChange={(e) => {
-          setSort({ ...sort, order: e.target.value });
-        }}
-      >
-        <option value="a"><Icon></Icon></option>
-        <option value="d">Descendent</option>
-      </Select> */}
     </SimpleGrid>
   );
 }

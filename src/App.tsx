@@ -24,7 +24,6 @@ function App() {
 
   useEffect(() => {
     GameService.getPlatforms().then((res) => {
-      console.log(res.data.results);
       setPlatforms(res.data.results);
     });
   }, []);
@@ -33,7 +32,6 @@ function App() {
     setLoading(true);
     GameService.getGames().then((res) => {
       setGames(res.data.results);
-      console.log(res.data.results);
       setLoading(false);
     });
   }, []);
